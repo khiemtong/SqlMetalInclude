@@ -1,0 +1,40 @@
+﻿<Window x:Class="SqlMetalIncludeGUI.EditConfig"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Me="clr-namespace:SqlMetalIncludeGUI"
+        Title="Edit Config" Height="150" Width="300"
+        x:Name="_this">
+    <Window.Resources>
+        <Me:Config x:Key="Config" />
+    </Window.Resources>
+    <DockPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Bottom">
+            <Button Content="Save" Margin="5" x:Name="saveButton" Click="saveButton_Click" />
+            <Button Content="Cancel" Margin="5" x:Name="cancelButton" Click="cancelButton_Click" />
+        </StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+
+            </Grid.RowDefinitions>
+            <TextBlock Text="Project name: " Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" />
+            <TextBox Text="{Binding Source={StaticResource Config}, Path=Default.ProjectName, UpdateSourceTrigger=PropertyChanged}" 
+                         x:Name="projectName" Grid.Column="1" Grid.Row="0"
+                 IsReadOnly="True"/>
+            <CheckBox 
+                    Grid.Row="1"
+                    Grid.Column="0" 
+                    Grid.ColumnSpan="2" 
+                    Margin="5" 
+                    Content="Exclude new tables by default"
+                    ToolTip="If enabled newly discovered tables/views are not included by default."
+                    IsChecked="{Binding Source={StaticResource Config}, Path=Default.ExcludeMode, UpdateSourceTrigger=PropertyChanged}"
+                    />
+        </Grid>
+    </DockPanel>
+</Window>

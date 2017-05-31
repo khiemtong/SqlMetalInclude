@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlMetalInclude", "SqlMetalInclude\SqlMetalInclude.csproj", "{98220896-8B4D-41C0-853B-AE464A6E4F6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlMetalIncludeGUI", "SqlMetalIncludeGUI\SqlMetalIncludeGUI.csproj", "{7E4F0E47-4406-4F6C-BDE5-20269F8CF1CD}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs04
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = SqlMetalInclude\\SqlMetalInclude.csproj
+		SccProjectName1 = SqlMetalInclude
+		SccLocalPath1 = SqlMetalInclude
+		SccProjectUniqueName2 = SqlMetalIncludeGUI\\SqlMetalIncludeGUI.csproj
+		SccProjectName2 = SqlMetalIncludeGUI
+		SccLocalPath2 = SqlMetalIncludeGUI
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{98220896-8B4D-41C0-853B-AE464A6E4F6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98220896-8B4D-41C0-853B-AE464A6E4F6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98220896-8B4D-41C0-853B-AE464A6E4F6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98220896-8B4D-41C0-853B-AE464A6E4F6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E4F0E47-4406-4F6C-BDE5-20269F8CF1CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E4F0E47-4406-4F6C-BDE5-20269F8CF1CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E4F0E47-4406-4F6C-BDE5-20269F8CF1CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E4F0E47-4406-4F6C-BDE5-20269F8CF1CD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

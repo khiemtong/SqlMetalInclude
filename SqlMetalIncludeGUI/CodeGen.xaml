@@ -1,0 +1,114 @@
+﻿<Page x:Class="SqlMetalIncludeGUI.CodeGen"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Me="clr-namespace:SqlMetalIncludeGUI"
+      x:Name="_this"
+    WindowTitle="SqlMetalIncludeGui - CodeGen">
+    <Page.Resources>
+        <Me:Config x:Key="Config" />
+    </Page.Resources>
+    <DockPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Bottom">
+            
+            <Button Margin="5" Content="Export batch file" x:Name="exportBatch" Click="ExportBatchClick"
+                    ToolTip="Exports a batch file as well as the SqlMetalInclude exe"/>
+            <Button Margin="5" Content="Run &amp; Save code file" x:Name="NextButton" Click="NextButtonClick" />
+        </StackPanel>
+        <GroupBox Header="Code generation options" DockPanel.Dock="Top">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                
+                <TextBlock 
+                    Grid.Column="0" 
+                    Grid.Row="0"
+                    Margin="5,0,0,0"
+                    VerticalAlignment="Center" 
+                    Text="Context name: " 
+                    ToolTip="Name of data context class. (Default: Derived from the Database name)" />
+                <TextBox Grid.Column="1" Grid.Row="0" Margin="3"
+                         Text="{Binding Source={StaticResource Config}, Path=Default.OutputCodeContextName, UpdateSourceTrigger=PropertyChanged}" />
+                
+                <TextBlock 
+                    Grid.Column="0" 
+                    Grid.Row="1" 
+                    Margin="5,0,0,0"
+                    VerticalAlignment="Center" 
+                    Text="Namespace: " 
+                    ToolTip="Namespace of generated code. (Default: No namespace)" />
+                <TextBox Grid.Column="1" Grid.Row="1" Margin="3"
+                         Text="{Binding Source={StaticResource Config}, Path=Default.OutputCodeNamespace, UpdateSourceTrigger=PropertyChanged}" />
+                
+                <TextBlock
+                    Grid.Column="0" 
+                    Grid.Row="2" 
+                    Margin="5,0,0,0"
+                    VerticalAlignment="Center" 
+                    Text="Output file: " 
+                    ToolTip="Output Code file name." />
+                <TextBox Grid.Column="1" Grid.Row="2" Margin="3" 
+                         Text="{Binding Source={StaticResource Config}, Path=Default.OutputCodeFile, UpdateSourceTrigger=PropertyChanged}" />
+
+                <CheckBox Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"
+                          Content="Put DataContext classes in a .designer.cs file." VerticalAlignment="Center"
+                          Margin="5"
+                          IsChecked="{Binding Source={StaticResource Config}, Path=Default.OutputCodeUseDesignerFile, UpdateSourceTrigger=PropertyChanged}">
+                    <CheckBox.ToolTip>
+                        This allows you to easially take advantage of the partial classes feature.
+                        All SqlMetal classes are marked as partial, so you can extend the generated classes 
+                        without your changes being overwritten when the code is regenerated.
+                    </CheckBox.ToolTip>
+                </CheckBox>
+
+                <TextBlock
+                    Grid.Column="0" 
+                    Grid.Row="4" 
+                    VerticalAlignment="Center" 
+                    Text="Language: " 
+                    Margin="5,0,0,0"
+                    ToolTip="Language of generated code. (Default: Derived from extension of code file)" />
+                <ComboBox Grid.Column="1" Grid.Row="4" SelectedIndex="0"
+                          Margin="3"
+                          SelectedValuePath="Content"
+                          SelectedValue="{Binding Source={StaticResource Config}, Path=Default.OutputCodeLanguage, UpdateSourceTrigger=PropertyChanged}">
+                    <ComboBox.Items>
+                        <ComboBoxItem>Default</ComboBoxItem>
+                        <ComboBoxItem>VB</ComboBoxItem>
+                        <ComboBoxItem>C#</ComboBoxItem>
+                    </ComboBox.Items>
+                </ComboBox>
+                
+                <TextBlock
+                    Grid.Column="0" 
+                    Margin="5,0,0,0"
+                    Grid.Row="5" 
+                    VerticalAlignment="Center" 
+                    Text="Entity base: " 
+                    ToolTip="Base class of entity classes in the generated code (default: entities have no base class)." />
+                <TextBox Grid.Column="1" Grid.Row="5" Margin="3"
+                         Text="{Binding Source={StaticResource Config}, Path=Default.OutputCodeEntityBase, UpdateSourceTrigger=PropertyChanged}" />
+                
+                <CheckBox Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2"
+                          Content="Generate serializable classes" VerticalAlignment="Center"
+                          Margin="5"
+                          ToolTip="Adds /serialization:Unidirectional flag to SqlMetal. Making the generated classes WCF compatible."
+                          IsChecked="{Binding Source={StaticResource Config}, Path=Default.OutputCodeSerializable, UpdateSourceTrigger=PropertyChanged}"
+                          />
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Output">
+            <TextBox Background="Black" Foreground="White" x:Name="codeGenOutput" TextWrapping="WrapWithOverflow" />
+        </GroupBox>
+    </DockPanel>
+</Page>
